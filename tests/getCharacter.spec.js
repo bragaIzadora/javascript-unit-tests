@@ -44,13 +44,42 @@ Retorno:
 
 describe('9 - Implemente os casos de teste da função `getCharacter`', () => {
   it('Verifica se a função `getCharacter` retorna o objeto do personagem corretamente.', () => {
-    fail('Teste vazio!');
     // ESCREVA SEUS TESTES ABAIXO:
     // 1. Teste se a função, quando não recebe nenhum parâmetro, retorna undefined.
+    expect(getCharacter()).toBeUndefined();
+  });
+  it('Verifica se a função retorna o objeto correto para o parametro chamado', () => {
     // 2. Teste se a função retorna o objeto correto para o parâmetro 'Arya',
+    expect(getCharacter('arya')).toEqual({
+      name: 'Arya Stark',
+      class: 'Rogue',
+      phrases: ['Not today', 'A girl has no name.'],
+    },);
+  });
+  it('Verifica se a função retorna o objeto correto para o parametro Brienne', () => {
     // 3. Teste se a função retorna o objeto correto para o parâmetro 'Brienne',
+    expect(getCharacter('brienne')).toEqual({
+      name: 'Brienne Tarth',
+      class: 'Knight',
+      phrases: ['Im No Lady, Your Grace.', 'I, Brienne Of Tarth, Sentence You To Die.'],
+    });
+  });
+  it('Verifica se a função retorna o objeto correto para o parametro Melissandre', () => {
     // 4. Teste se a função retorna o objeto correto para o parâmetro 'Melissandre',
+    expect(getCharacter('melissandre')).toEqual({
+      name: 'Melissandre',
+      class: 'Necromancer',
+      phrases: ['Death By Fire Is The Purest Death.', 'For The Night Is Dark And Full Of Terrors.'],
+    });
+  });
+  it('Verifica se o parametro não é case sensitive', () => {
     // 5. Teste se o parâmetro não é Case Sensitive, ou seja, independente de conter letras maiúsculas ou minúsculas retorna o mesmo objeto relativo a ele.
+    const upperCase = getCharacter('ARYA');
+    const lowCase = getCharacter('arya');
+    expect(upperCase).toEqual(lowCase);
+  });
+  it('verifica se ao passar um nome que não tem na tabela retorna undefined', () => {
     // 6. Teste se ao passar um nome que não está na tabela, a função retorna undefined.
+    expect(getCharacter('joão')).toBeUndefined();
   });
 });
