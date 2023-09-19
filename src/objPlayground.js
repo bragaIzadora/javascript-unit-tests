@@ -42,21 +42,17 @@ const calculator = (number1, number2) => ({
 });
 
 const arrayGenerator = (type, object) => {
-  try {
-    if (type === 'keys') {
-      const arrayKeys = Object.keys(object);
-      return arrayKeys;
-    } 
-    
-    if (type === 'values') {
-      return Object.values(object);
-    }
-    
-    if (type === 'entries') {
-      return Object.entries(object);
-    }
-  } catch (error) {
-    return undefined;
+  if (type === 'keys') {
+    const arrayKeys = Object.keys(object);
+    return arrayKeys;
+  }
+
+  if (type === 'values') {
+    return Object.values(object);
+  }
+
+  if (type === 'entries') {
+    return Object.entries(object);
   }
 };
 
